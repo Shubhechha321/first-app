@@ -1,0 +1,135 @@
+
+
+
+<div class="container p-4 background-color">
+    <form [formGroup]="requiredForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row">
+          <div class="col-12 text-center">
+             <h2>Registration</h2>
+          </div>
+        </div>
+        <div class="row form-group mt-2">
+            <div class="col-2 text-right">
+                <label>First Name:</label>
+                <label class="text-danger">*</label>
+            </div>
+            <div class="col-9 text-danger btn-box">
+                <input type="text" id="FName" class="form-control" formControlName="firstname">
+                <span class="alert-danger" *ngIf="getControl['firstname'].errors?.['required'] ">First name is required.</span>
+                <span *ngIf="getControl['firstname'].errors?.['minlength'] ">Minimum 5 character are required.</span>
+                <span *ngIf="getControl['firstname'].errors?.['maxlength'] ">Maximum 50 characters.</span>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+
+        <div class="row form-group mt-2">
+            <div class="col-2 text-right">
+                <label>Last Name:</label>
+                <label class="text-danger">*</label>
+            </div>
+            <div class="col-9 text-danger">
+                <input type="text" id="LName" class="form-control" formControlName="lastname">
+                <span *ngIf="getControl['lastname'].errors?.['required']" class="text-danger">Last name is required.</span>
+                <span *ngIf="getControl['lastname'].errors?.['minlength']" class="text-danger">Minimum 5 character are required.</span>
+                <span *ngIf="getControl['lastname'].errors?.['maxlength']" class="text-danger">Maximum 50 characters.</span>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+
+        <div class="row form-group mt-2">
+            <div class="col-2 text-right">
+                <label>Email Address:</label>
+                <label class="text-danger">*</label>
+            </div>
+            <div class="col-9">
+                <input type="text" id="Email" class="form-control" formControlName="email">
+                <div *ngIf="getControl['email'].touched && getControl['email'].invalid" class="text-danger">
+                    <span *ngIf="getControl['email'].errors?.['required']">Email is required.</span>
+                    <span *ngIf="getControl['email'].errors?.['email']">Email seems invalid.</span>
+                  </div>
+                </div>
+            <div class="col-1">
+            </div>
+        </div>
+
+        <div class="row form-group mt-2">
+            <div class="col-2 text-right">
+                <label>Phone Number:</label>
+            </div>
+            <div class="col-9 text-danger">
+                <input type="text" id="Phone" class="form-control" formControlName="phone">
+                <span *ngIf="getControl['phone'].errors?.['pattern'] || getControl['phone'].errors?.['maxlength'] || getControl['phone'].errors?.['minlength']">Phone number is not valid</span>
+                </div>
+            <div class="col-1">
+            </div>
+        </div>
+
+        <div class="row form-group mt-2">
+            <div class="col-2 text-right">
+                <label>Organization Name:</label>
+            </div>
+            <div class="col-9">
+                <input type="text" id="orgname" class="form-control" formControlName="orgname">
+                <span *ngIf="getControl['orgname'].errors?.['maxlength']">Maximum 1000 characters.</span>
+            
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+       
+        
+        <div class="row form-group mt-2">
+            <div class="col-2 text-right">
+                <label>Organization Address:</label>
+            </div>
+            <div class="col-9">
+                <input type="text" id="orgaddress" class="form-control" formControlName="orgaddress">
+                <span *ngIf="getControl['orgaddress'].errors?.['maxlength']">Maximum 1000 characters.</span>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+
+        <div class="row form-group mt-2">
+            <div class="col-2 text-right">
+                <label>Password:</label>
+            </div>
+            <div class="col-9">
+                <input type="text" id="password" class="form-control" formControlName="password">
+                <span *ngIf="getControl['password'].errors?.['maxlength']">Maximum 16 characters.</span>
+            
+                </div>
+            <div class="col-1">
+            </div>
+        </div>
+
+        <div class="row form-group mt-2">
+            <div class="col-2 text-right">
+                <label>Organization established date:</label>
+                <label class="text-danger">*</label>
+            </div>
+            <div class="col-9 text-danger">
+                <input type="date"  placeholder="Date" id="date" class="form-control" formControlName="date">
+                
+                <span *ngIf="getControl['date'].errors?.['required']">Organization established date required.</span>
+            
+                </div>
+            <div class="col-1">
+            </div>
+        </div>
+        <br/><br/>
+        <div class="row form-group mt-2">
+            <p>
+                <button [disabled]="!requiredForm.valid" type="submit">Submit</button>
+                <!-- <button type="submit">Submit</button> -->
+              </p>
+              <p>
+                <button type="reset">Reset</button>
+              </p>
+        </div>
+        
+    </form>
+    
+</div>
